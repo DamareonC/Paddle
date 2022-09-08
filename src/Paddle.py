@@ -4,7 +4,7 @@ import Ball
 
 class PaddleOne:  # The Player's Paddle
     def __init__(self):
-        self.rect = pygame.Rect(0, 320, 10, 60)  # Sets the paddle to (0, 320) and makes paddle 10px in width, 60px in height
+        self.rect = pygame.Rect(0, 320, 10, 60)  # Sets the paddle to pos (0, 320) and makes paddle 10px in width, 60px in height
         self.speed = 5.0
 
     def move(self):

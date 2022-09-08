@@ -45,7 +45,7 @@ class Game:
                     self.running = False
                     pygame.quit()
                     sys.exit()
-            if Ball.Ball.rect.left <= -20 or Ball.Ball.rect.right >= 660:
+            if Ball.Ball.rect.left <= -20 or Ball.Ball.rect.right >= 660:  # Stops the program when a paddle scores. Will add score and win systems later.
                 self.running = False
                 pygame.quit()
                 sys.exit()

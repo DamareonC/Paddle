@@ -6,7 +6,7 @@ class Ball:
     rect = pygame.Rect(320, 320, 10, 10)
 
     def __init__(self):
-        self.x_speed = 3 if random.randint(1, 2) == 1 else -3
+        self.x_speed = 3 if random.randint(1, 2) == 1 else -3  # Makes the ball have a 50% chance to go either left or right when the game starts
         self.y_speed = 3
 
     # Changes the vertical speed of the ball
