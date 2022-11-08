@@ -1,7 +1,7 @@
 import Game
 
 
-def main():
+def main() -> None:
     Game.Game()
 
 
