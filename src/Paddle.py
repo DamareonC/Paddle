@@ -1,6 +1,7 @@
 from pygame import *
 from Ball import Ball
 
+
 class PaddleOne:  # The Player's Paddle
     def __init__(self) -> None:
         self.rect: Rect = Rect(0, 320, 10, 60)  # Sets the paddle to pos (0, 320) and makes paddle 10px in width, 60px in height
@@ -31,6 +32,7 @@ class PaddleOne:  # The Player's Paddle
     def reset_position(self) -> None:
         self.rect.right = 10
         self.rect.top = 320
+
 
 class PaddleTwo:  # The AI's Paddle
     def __init__(self) -> None:

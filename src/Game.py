@@ -7,8 +7,10 @@ from pygame import Surface, font, mixer
 from Paddle import PaddleOne, PaddleTwo
 from Ball import Ball
 
+
 def is_colliding_point(point: tuple[int, int], rect_pos: tuple[int, int], rect_size: [int, int]):
     return rect_pos[0] <= point[0] <= rect_pos[0] + rect_size[0] and rect_pos[1] <= point[1] <= rect_pos[1] + rect_size[1]
+
 
 class Game:
     def __init__(self) -> None:
@@ -17,8 +19,8 @@ class Game:
         self.window: Surface = pygame.display.set_mode(size=(640, 640))
         pygame.display.set_caption("Paddle")
 
-        self.font: font.Font = font.Font(os.path.join(os.path.dirname(__file__), r"..\res\fonts\courier.ttf"), 36)
-        self.score_sound: mixer.Sound = mixer.Sound(os.path.join(os.path.dirname(__file__), r"..\res\sounds\score.ogg"))
+        self.font: font.Font = font.Font(os.path.join(os.path.dirname(__file__), r"../res/fonts/courier.ttf"), 36)
+        self.score_sound: mixer.Sound = mixer.Sound(os.path.join(os.path.dirname(__file__), r"../res/sounds/score.ogg"))
 
         self.title: Surface = self.font.render('Paddle', True, 'white')
         self.win: Surface = self.font.render('', True, 'white')
@@ -33,8 +35,8 @@ class Game:
         self.exit_pos: tuple[int, int] = (320 - self.exit.get_size()[0] // 2, 400)
 
         self.running: bool = True
-        self.screen = 0  # 0 = start, 1 = playing, 2 = game over/restart
-        self.winner = -1  # -1 = neither, 0 = player, 1 = opponent
+        self.screen: int = 0  # 0 = start, 1 = playing, 2 = game over/restart
+        self.winner: int = -1  # -1 = neither, 0 = player, 1 = opponent
 
         self.paddle_one: PaddleOne = PaddleOne()
         self.paddle_two: PaddleTwo = PaddleTwo()

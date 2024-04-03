@@ -4,11 +4,12 @@ import random
 from pygame import *
 from pygame.mixer import Sound
 
+
 class Ball:
     def __init__(self) -> None:
         self.rect: Rect = Rect(320, 320, 10, 10)
-        self.bounce_sound: Sound = Sound(os.path.join(os.path.dirname(__file__), r"..\res\sounds\bounce.ogg"))
-        self.hit_sound: mixer.Sound = mixer.Sound(os.path.join(os.path.dirname(__file__), r"..\res\sounds\hit.ogg"))
+        self.bounce_sound: Sound = Sound(os.path.join(os.path.dirname(__file__), r"../res/sounds/bounce.ogg"))
+        self.hit_sound: mixer.Sound = mixer.Sound(os.path.join(os.path.dirname(__file__), r"../res/sounds/hit.ogg"))
 
         self.x_speed: int = 3 if random.randint(a=1, b=2) == 1 else -3  # Makes the ball have a 50% chance to go either left or right when the game starts
         self.y_speed: int = 3
