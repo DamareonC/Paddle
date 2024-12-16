@@ -30,8 +30,8 @@ class Ball:
     # Moves the ball within screen bounds
     def move(self) -> None:
         if self.rect.top <= 0 or self.rect.bottom >= 639:
-            self.y_speed = -self.y_speed
             self.bounce_sound.play()
+            self.y_speed = -self.y_speed
 
         self.rect.move_ip(self.x_speed, self.y_speed)
 

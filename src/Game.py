@@ -3,7 +3,7 @@ import sys
 import time
 import pygame
 
-from pygame import Surface, font, mixer
+from pygame import Surface, display, draw, font, image, mixer
 from Paddle import PaddleOne, PaddleTwo
 from Ball import Ball
 
@@ -16,8 +16,9 @@ class Game:
     def __init__(self) -> None:
         pygame.init()
 
-        self.window: Surface = pygame.display.set_mode(size=(640, 640))
-        pygame.display.set_caption("Paddle")
+        self.window: Surface = display.set_mode(size=(640, 640))
+        display.set_caption("Paddle")
+        display.set_icon(image.load(os.path.join(os.path.dirname(__file__), r"../res/images/icon.png")))
 
         self.font: font.Font = font.Font(os.path.join(os.path.dirname(__file__), r"../res/fonts/courier.ttf"), 36)
         self.score_sound: mixer.Sound = mixer.Sound(os.path.join(os.path.dirname(__file__), r"../res/sounds/score.ogg"))
@@ -108,9 +109,7 @@ class Game:
 
             if self.paddle_two.score == 5:
                 self.winner = 1
-                self.screen = 2
-                self.win: Surface = self.font.render(('Player' if self.winner == 0 else 'CPU') + ' Wins!', True, 'white')
-                self.win_pos: tuple[int, int] = (320 - self.win.get_size()[0] // 2, 100)
+                self.win_label()
 
             self.reset()
         elif self.ball.get_rect().right >= 660:
@@ -119,9 +118,7 @@ class Game:
 
             if self.paddle_one.score == 5:
                 self.winner = 0
-                self.screen = 2
-                self.win: Surface = self.font.render(('Player' if self.winner == 0 else 'CPU') + ' Wins!', True, 'white')
-                self.win_pos: tuple[int, int] = (320 - self.win.get_size()[0] // 2, 100)
+                self.win_label()
 
             self.reset()
 
@@ -131,9 +128,9 @@ class Game:
         self.paddle_two.reset_position()
 
     def game_screen(self):
-        pygame.draw.rect(surface=self.window, rect=self.paddle_one.get_rect(), color=(255, 255, 255))
-        pygame.draw.rect(surface=self.window, rect=self.paddle_two.get_rect(), color=(255, 255, 255))
-        pygame.draw.rect(surface=self.window, rect=self.ball.get_rect(), color=(255, 255, 255))
+        draw.rect(surface=self.window, rect=self.paddle_one.get_rect(), color=(255, 255, 255))
+        draw.rect(surface=self.window, rect=self.paddle_two.get_rect(), color=(255, 255, 255))
+        draw.rect(surface=self.window, rect=self.ball.get_rect(), color=(255, 255, 255))
 
         self.window.blit(self.font.render(self.paddle_one.score.__str__(), True, 'white'), (150, 0))
         self.window.blit(self.font.render(self.paddle_two.score.__str__(), True, 'white'), (470, 0))
@@ -147,3 +144,8 @@ class Game:
         self.window.blit(self.win, self.win_pos)
         self.window.blit(self.restart, self.restart_pos)
         self.window.blit(self.exit, self.exit_pos)
+
+    def win_label(self):
+        self.screen = 2
+        self.win: Surface = self.font.render(('Player' if self.winner == 0 else 'CPU') + ' Wins!', True, 'white')
+        self.win_pos: tuple[int, int] = (320 - self.win.get_size()[0] // 2, 100)
