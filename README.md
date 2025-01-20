@@ -1,6 +1,6 @@
 # Paddle
 
-Paddle is a simple Pong-like game written in Python using Pygame. In the game, you play against an AI with the goal of hitting the ball past them to score. The first to get 5 points wins the game. You can move using the Up/Down arrow keys or the W/S keys.
+Paddle is a simple Pong-like game written in [Python](https://www.python.org/) using [Pygame](https://www.pygame.org/). In the game, you play against a CPU with the goal of hitting the ball past them to score. The first to get 5 points wins the game. You can move using the Up/Down arrow keys or the W/S keys.
 
 ## Requirements
 
@@ -15,8 +15,10 @@ To run Paddle:
 1. Open a terminal (Command Prompt on Windows)
 2. Clone this repo with `git clone https://github.com/DamareonC/paddle.git`
 3. Go into the directory with `cd paddle`
-4. Install the required dependencies with `pip install -r requirements.txt`
+4. Install the required dependencies with `pip install -r requirements.txt`*
 5. Start Paddle with `python ./src/Main.py`
+
+*The latest version of Pygame may need to be installed, which can be done with `pip install -U pygame` after installing Pygame
 
 ## Running in a virtual environment
 
