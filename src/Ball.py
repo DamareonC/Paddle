@@ -12,7 +12,7 @@ class Ball:
         self.hit_sound: mixer.Sound = mixer.Sound(os.path.join(os.path.dirname(__file__), r"../res/sounds/hit.ogg"))
 
         self.x_speed: int = 3 if random.randint(a=1, b=2) == 1 else -3  # Makes the ball have a 50% chance to go either left or right when the game starts
-        self.y_speed: int = 3
+        self.y_speed: int = 3 if random.randint(a=1, b=2) == 1 else -3
 
     # Changes the vertical speed of the ball
     def change_speed(self) -> None:
@@ -47,5 +47,5 @@ class Ball:
     def reset_position(self) -> None:
         self.rect.right = 320
         self.rect.top = 320
-        self.x_speed: int = 3 if random.randint(a=1, b=2) == 1 else -3
-        self.y_speed: int = 3
+        self.x_speed = 3 if random.randint(a=1, b=2) == 1 else -3
+        self.y_speed = 3 if random.randint(a=1, b=2) == 1 else -3

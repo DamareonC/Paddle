@@ -85,6 +85,14 @@ class Game:
                 match event.type:
                     case pygame.QUIT:
                         self.running = False
+                    case pygame.MOUSEMOTION:
+                        match self.screen:
+                            case 0:
+                                self.change_start_color(event)
+                                self.change_exit_color(event)
+                            case 2:
+                                self.change_restart_color(event)
+                                self.change_exit_color(event)
                     case pygame.MOUSEBUTTONDOWN:
                         match self.screen:
                             case 0:
@@ -148,4 +156,22 @@ class Game:
     def win_label(self):
         self.screen = 2
         self.win: Surface = self.font.render(('Player' if self.winner == 0 else 'CPU') + ' Wins!', True, 'white')
-        self.win_pos: tuple[int, int] = (320 - self.win.get_size()[0] // 2, 100)
+        self.win_pos = (320 - self.win.get_size()[0] // 2, 100)
+
+    def change_start_color(self, event: pygame.event.Event):
+        if is_colliding_point(event.pos, self.start_pos, self.start.get_size()):
+            self.start = self.font.render('Start', True, 'green')
+        else:
+            self.start = self.font.render('Start', True, 'white')
+
+    def change_restart_color(self, event: pygame.event.Event):
+        if is_colliding_point(event.pos, self.start_pos, self.start.get_size()):
+            self.restart = self.font.render('Restart', True, 'green')
+        else:
+            self.restart = self.font.render('Restart', True, 'white')
+
+    def change_exit_color(self, event: pygame.event.Event):
+        if is_colliding_point(event.pos, self.exit_pos, self.exit.get_size()):
+            self.exit = self.font.render('Exit', True, 'red')
+        else:
+            self.exit = self.font.render('Exit', True, 'white')

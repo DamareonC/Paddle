@@ -4,10 +4,10 @@ from Ball import Ball
 
 class PaddleCore:
     def __init__(self, x_pos):
-        self.x_pos = x_pos
+        self.x_pos: int = x_pos
         self.rect: Rect = Rect(self.x_pos, 320, 10, 60)  # Sets the paddle to pos (x_pos, 320) and makes paddle 10px in width, 60px in height
         self.speed: float = 5.0
-        self.score = 0
+        self.score: int = 0
 
     def hit(self, ball: Ball) -> None:
         if self.rect.colliderect(ball.get_rect()):  # True if the paddle hits the ball
